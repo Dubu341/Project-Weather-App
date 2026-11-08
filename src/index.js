@@ -1,12 +1,12 @@
 console.log("hello");
-const API_KEY = "T2CFU9BY2K94SK4UZD96B3J8Q";
+const API_KEY = "679762401ccb45b2873182056260811";
 const form = document.querySelector("form");
 const search = document.querySelector("input");
 
-async function getWeather(country, unitGroup) {
+async function getWeather(location) {
   try {
     const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodeURIComponent(country)}?unitGroup=${unitGroup}&key=${API_KEY}&contentType=json`,
+      `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(location)}`,
     );
 
     if (!response.ok) {
@@ -15,15 +15,14 @@ async function getWeather(country, unitGroup) {
 
     const data = await response.json();
 
-    const address = data.address;
-    const temp = data.currentConditions.temp;
-    const humidity = data.currentConditions.humidity;
-    const wind = data.currentConditions.windspeed;
-    const sunrise = data.currentConditions.sunrise;
-    const sunset = data.currentConditions.sunset;
-    const conditions = data.currentConditions.conditions;
+    const country = data.location.country;
+    const city = data.location.name;
+    const tempC = data.current.temp_c;
+    const humidity = data.current.humidity;
+    const windKph = data.current.wind_kph;
+    const conditions = data.current.condition.text;
     console.log(
-      `Address: ${address}, Temp: ${temp}, Humidity: ${humidity}, Wind: ${wind}, Sunrise: ${sunrise}, Sunset: ${sunset}, Conditions: ${conditions}`,
+      `Country: ${country}, City: ${city}, Temp: ${tempC}C, Humidity: ${humidity}, Wind: ${windKph}KPH, Conditions: ${conditions}`,
     );
   } catch (error) {
     console.error(error);
@@ -34,5 +33,5 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   const location = search.value.trim();
   if (!location) return;
-  getWeather(location, "metric");
+  getWeather(location);
 });
