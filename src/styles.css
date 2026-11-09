@@ -80,6 +80,12 @@ body {
   margin: 0;
   min-height: 100vh;
   justify-content: center;
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
+  background-color: #3b2f23;
 }
 .layout {
   background-color: grey;
@@ -92,5 +98,15 @@ body {
   padding: 10px;
 }
 
-.weatherIcon {
+.location {
+  display: grid;
+  grid-template-columns: 50px 80px 1fr;
+  align-items: center;
+}
+.condition {
+  margin-left: 7px;
+}
+.temps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
