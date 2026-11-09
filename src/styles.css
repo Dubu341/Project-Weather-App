@@ -88,7 +88,7 @@ body {
   background-color: #3b2f23;
 }
 .layout {
-  background-color: grey;
+  /* background-color: grey; */
   /* margin-inline: auto; */
   min-width: 600px;
   place-items: center;

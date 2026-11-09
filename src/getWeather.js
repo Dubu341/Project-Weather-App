@@ -1,3 +1,4 @@
+import { updateBackground } from "./updateBackground.js";
 const API_KEY = "679762401ccb45b2873182056260811";
 const img = document.querySelector("img");
 const country = document.querySelector(".country");
@@ -44,6 +45,7 @@ async function getWeather(location) {
     humidity.textContent = `Humidity: ${humidityData}%`;
     wind.textContent = `Wind Speed: ${windKph} km/h`;
     condition.textContent = `${conditionsData}`;
+    updateBackground(conditionsData);
   } catch (error) {
     console.error(error);
   }
