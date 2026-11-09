@@ -1,7 +1,15 @@
+import {} from "./styles.css";
 console.log("hello");
 const API_KEY = "679762401ccb45b2873182056260811";
 const form = document.querySelector("form");
 const search = document.querySelector("input");
+const img = document.querySelector("img");
+const city = document.querySelector(".city");
+const country = document.querySelector(".country");
+const temp = document.querySelector(".temp");
+const humidity = document.querySelector(".humidity");
+const wind = document.querySelector(".wind");
+const condition = document.querySelector(".condition");
 
 async function getWeather(location) {
   try {
@@ -15,15 +23,22 @@ async function getWeather(location) {
 
     const data = await response.json();
 
-    const country = data.location.country;
-    const city = data.location.name;
+    const countryData = data.location.country;
+    const cityData = data.location.name;
     const tempC = data.current.temp_c;
-    const humidity = data.current.humidity;
+    const humidityData = data.current.humidity;
     const windKph = data.current.wind_kph;
-    const conditions = data.current.condition.text;
+    const conditionsData = data.current.condition.text;
+    img.src = data.current.condition.icon;
     console.log(
-      `Country: ${country}, City: ${city}, Temp: ${tempC}C, Humidity: ${humidity}, Wind: ${windKph}KPH, Conditions: ${conditions}`,
+      `Country: ${countryData}, City: ${cityData}, Temp: ${tempC}C, Humidity: ${humidityData}, Wind: ${windKph}KPH, Conditions: ${conditionsData}`,
     );
+    country.textContent = `Country: ${countryData}`;
+    city.textContent = `City: ${cityData}`;
+    temp.textContent = `Temperature: ${tempC} °C`;
+    humidity.textContent = `Humidity: ${humidityData}`;
+    wind.textContent = `Wind Speed: ${windKph} km/h`;
+    condition.textContent = `Conditions: ${conditionsData}`;
   } catch (error) {
     console.error(error);
   }

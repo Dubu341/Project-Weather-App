@@ -6,16 +6,29 @@
     <title>Document</title>
   </head>
   <body>
-    <search>
-      <form action="" method="get">
-        <input
-          type="search"
-          name="search"
-          id="search"
-          placeholder="search city"
-        />
-        <button type="submit">search</button>
-      </form>
-    </search>
+    <div class="layout">
+      <search class="search-bar">
+        <form action="" method="get">
+          <input
+            type="search"
+            name="search"
+            id="search"
+            placeholder="search city"
+          />
+          <button type="submit">search</button>
+        </form>
+      </search>
+      <img src="#" alt="" class="weatherIcon" />
+      <div>
+        <p class="country"></p>
+        <p class="city"></p>
+      </div>
+      <div>
+        <p class="temp"></p>
+        <p class="humidity"></p>
+        <p class="wind"></p>
+        <p class="condition"></p>
+      </div>
+    </div>
   </body>
 </html>
