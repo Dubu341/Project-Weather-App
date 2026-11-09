@@ -11,6 +11,8 @@ const temp = document.querySelector(".temp");
 const humidity = document.querySelector(".humidity");
 const wind = document.querySelector(".wind");
 const condition = document.querySelector(".condition");
+const searchBar = document.querySelector(".search-bar");
+const showError = document.createElement("p");
 
 async function getWeather(location) {
   try {
@@ -18,8 +20,13 @@ async function getWeather(location) {
       `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(location)}`,
     );
 
+    showError.textContent = "";
+
     if (!response.ok) {
-      throw new Error(`Request failed: ${response.status}`);
+      console.log(`Request failed: ${response.status}`);
+      showError.textContent = "Could not find the City";
+      searchBar.append(showError);
+      return;
     }
 
     const data = await response.json();
@@ -39,7 +46,7 @@ async function getWeather(location) {
 
     country.textContent = `${countryData}, ${cityData}`;
 
-    temp.textContent = `${tempC} °C`;
+    temp.textContent = `${Math.round(tempC)} °C`;
     humidity.textContent = `Humidity: ${humidityData}%`;
     wind.textContent = `Wind Speed: ${windKph} km/h`;
     condition.textContent = `${conditionsData}`;
