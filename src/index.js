@@ -37,12 +37,12 @@ async function getWeather(location) {
       `Country: ${countryData}, City: ${cityData}, Temp: ${tempC}C, Humidity: ${humidityData}, Wind: ${windKph}KPH, Conditions: ${conditionsData}`,
     );
 
-    country.textContent = `${countryData}, ${cityData}.`;
+    country.textContent = `${countryData}, ${cityData}`;
 
     temp.textContent = `${tempC} °C`;
     humidity.textContent = `Humidity: ${humidityData}%`;
     wind.textContent = `Wind Speed: ${windKph} km/h`;
-    condition.textContent = `${conditionsData}.`;
+    condition.textContent = `${conditionsData}`;
   } catch (error) {
     console.error(error);
   }
@@ -53,4 +53,5 @@ form.addEventListener("submit", (e) => {
   const location = search.value.trim();
   if (!location) return;
   getWeather(location);
+  form.reset();
 });
