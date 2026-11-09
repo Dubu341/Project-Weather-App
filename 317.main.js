@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebpack_template=self.webpackChunkwebpack_template||[]).push([[317],{504(e,a,t){const c=t.p+"b58a82ec7b7a852b39ab.jpg";document.querySelector(".layout").style.backgroundImage=`url("${c}")`}}]);
