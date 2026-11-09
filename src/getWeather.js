@@ -12,12 +12,13 @@ const showError = document.createElement("p");
 
 async function getWeather(location) {
   try {
+    showError.textContent = "";
+
     loading();
+    
     const response = await fetch(
       `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(location)}`,
     );
-
-    showError.textContent = "";
 
     if (!response.ok) {
       console.log(`Request failed: ${response.status}`);
