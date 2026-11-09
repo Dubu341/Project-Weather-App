@@ -1,4 +1,5 @@
 import { updateBackground } from "./updateBackground.js";
+import { loading, hideLoading } from "./loading.js";
 const API_KEY = "679762401ccb45b2873182056260811";
 const img = document.querySelector("img");
 const country = document.querySelector(".country");
@@ -11,6 +12,7 @@ const showError = document.createElement("p");
 
 async function getWeather(location) {
   try {
+    loading();
     const response = await fetch(
       `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(location)}`,
     );
@@ -48,6 +50,8 @@ async function getWeather(location) {
     updateBackground(conditionsData);
   } catch (error) {
     console.error(error);
+  } finally {
+    hideLoading();
   }
 }
 
