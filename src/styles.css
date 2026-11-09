@@ -116,6 +116,10 @@ body {
 }
 .temp {
   font-size: 1.8rem;
+  cursor: pointer;
+}
+.temp:hover {
+  opacity: 0.5;
 }
 .temps {
   margin-top: 10px;
