@@ -99,14 +99,24 @@ body {
 }
 
 .location {
+  margin-top: 10px;
   display: grid;
-  grid-template-columns: 50px 80px 1fr;
+  grid-template-columns: 50px 100px 1fr;
   align-items: center;
 }
 .condition {
-  margin-left: 7px;
+  font-size: 0.9em;
+  font-weight: 200;
+  margin-left: 5px;
+}
+.country {
+  font-size: 1.2em;
+}
+.temp {
+  font-size: 1.8rem;
 }
 .temps {
+  margin-top: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
