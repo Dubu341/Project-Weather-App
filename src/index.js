@@ -13,4 +13,4 @@ form.addEventListener("submit", (e) => {
   form.reset();
 });
 
-getWeather("Bergamo");
+getWeather("Yuma");

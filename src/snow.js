@@ -1,4 +1,8 @@
 import snowImg from "../images/snow.jpg";
-const layout = document.querySelector(".layout");
 
-layout.style.backgroundImage = `url("${snowImg}")`;
+function apply() {
+  const layout = document.querySelector(".layout");
+  layout.style.backgroundImage = `url("${snowImg}")`;
+}
+
+export { apply };

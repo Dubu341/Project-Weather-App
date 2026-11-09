@@ -1,21 +1,23 @@
 async function updateBackground(condition) {
   const weather = condition.toLowerCase();
-
+  let loader;
   if (weather.includes("clear")) {
-    await import("./clear.js");
+    loader = () => import("./clear.js");
   } else if (weather.includes("cloud") || weather.includes("overcast")) {
-    await import("./cloud.js");
+    loader = () => import("./cloud.js");
   } else if (
     weather.includes("rain") ||
     weather.includes("drizzle") ||
     weather.includes("thunderstorm")
   ) {
-    await import("./rain.js");
+    loader = () => import("./rain.js");
   } else if (weather.includes("snow")) {
-    await import("./snow.js");
+    loader = () => import("./snow.js");
   } else {
-    await import("./clear.js");
+    loader = () => import("./clear.js");
   }
+  const module = await loader();
+  module.apply();
 }
 
 export { updateBackground };
