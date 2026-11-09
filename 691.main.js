@@ -1,1 +1,1 @@
-"use strict";(self.webpackChunkwebpack_template=self.webpackChunkwebpack_template||[]).push([[691],{603(e,c,t){const a=t.p+"afe8c8b2c18717db2814.jpg";document.querySelector(".layout").style.backgroundImage=`url("${a}")`}}]);
+"use strict";(self.webpackChunkwebpack_template=self.webpackChunkwebpack_template||[]).push([[691],{603(e,c,t){t.r(c),t.d(c,{apply:()=>p});const a=t.p+"afe8c8b2c18717db2814.jpg";function p(){document.querySelector(".layout").style.backgroundImage=`url("${a}")`}}}]);
