@@ -10,12 +10,29 @@ const condition = document.querySelector(".condition");
 const searchBar = document.querySelector(".search-bar");
 const showError = document.createElement("p");
 
+let toggleUnit = true;
+let temperatureC = null;
+let temperatureF = null;
+
+function displayTemp() {
+  if (temperatureC === null) return;
+
+  temp.textContent = toggleUnit
+    ? `${Math.round(temperatureC)} °C`
+    : `${Math.round(temperatureF)} °F`;
+}
+temp.addEventListener("click", () => {
+  toggleUnit = !toggleUnit;
+  console.log(toggleUnit);
+  displayTemp();
+});
+
 async function getWeather(location) {
   try {
     showError.textContent = "";
 
     loading();
-    
+
     const response = await fetch(
       `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(location)}`,
     );
@@ -31,7 +48,8 @@ async function getWeather(location) {
 
     const countryData = data.location.country;
     const cityData = data.location.name;
-    const tempC = data.current.temp_c;
+    temperatureC = data.current.temp_c;
+    temperatureF = data.current.temp_f;
     const humidityData = data.current.humidity;
     const windKph = data.current.wind_kph;
     const conditionsData = data.current.condition.text;
@@ -39,12 +57,12 @@ async function getWeather(location) {
     img.src = data.current.condition.icon;
 
     console.log(
-      `Country: ${countryData}, City: ${cityData}, Temp: ${tempC}C, Humidity: ${humidityData}, Wind: ${windKph}KPH, Conditions: ${conditionsData}`,
+      `Country: ${countryData}, City: ${cityData}, Temp: ${temperatureC}C, Humidity: ${humidityData}, Wind: ${windKph}KPH, Conditions: ${conditionsData}`,
     );
 
     country.textContent = `${countryData}, ${cityData}`;
 
-    temp.textContent = `${Math.round(tempC)} °C`;
+    displayTemp();
     humidity.textContent = `Humidity: ${humidityData}%`;
     wind.textContent = `Wind Speed: ${windKph} km/h`;
     condition.textContent = `${conditionsData}`;
